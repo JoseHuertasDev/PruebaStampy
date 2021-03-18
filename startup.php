@@ -1,12 +1,8 @@
 <?php
     require_once './libs/router.class.php';
     require_once './app/controller/user.controller.php';
+    require_once './app/controller/home.controller.php';
 
-    // CONSTANTES PARA RUTEO
-    define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
-    define("LOGIN", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/login');
-    define("LOGOUT", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/logout');
-    
     class Startup{
         public function init(){
 
@@ -15,6 +11,8 @@
             DependencyInjectorEngine::add("IUserView","UserView");
             DependencyInjectorEngine::add("ITemplate","TemplateEngine");
             DependencyInjectorEngine::addSingleton("UserModel","UserModel");
+            DependencyInjectorEngine::addSingleton("IAuthService","AuthService");
+            DependencyInjectorEngine::add("INavigationService","NavigationService");
 
             $this->startRouter();
         }   
@@ -23,7 +21,11 @@
             // creo el router
             $router = new Router(); 
             //"encendemos" el router
-            $router->addRoute("login", "GET", "UserController", "Login");
+            $router->addRoute("home", "GET", "HomeController", "showList");
+            $router->addRoute("login", "GET", "UserController", "login");
+            $router->addRoute("logout", "GET", "UserController", "logout");
+            $router->addRoute("log-user", "POST", "UserController", "logUser");
+            $router->setDefaultRoute("HomeController", "showList");
             $router->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 
         }
     }
