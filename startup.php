@@ -12,7 +12,8 @@
 
             //Añadimos las dependencias
             DependencyInjectorEngine::add("UserController","UserController");
-            DependencyInjectorEngine::add("UserView","UserView");
+            DependencyInjectorEngine::add("IUserView","UserView");
+            DependencyInjectorEngine::add("ITemplate","TemplateEngine");
             DependencyInjectorEngine::addSingleton("UserModel","UserModel");
 
             $this->startRouter();
