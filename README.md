@@ -12,4 +12,4 @@ El sistema requiere un motor de base de datos MySql y  un servidor Apache para p
 
 ## Usuario administrador ##
 
-Por defecto, la base de datos trae un usuario con el mail admin@sample.com con la contraseña admin123.
+Por defecto, la base de datos trae un usuario con el mail default@sample.com con la contraseña default123.
