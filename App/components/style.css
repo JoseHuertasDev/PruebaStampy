@@ -3,6 +3,7 @@
     --purple-color: #594AE2;
     --red-color: #ff4081;
     --box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    --grey-color: #495057;;
 }
 a{
     text-decoration: none;
@@ -82,19 +83,28 @@ nav ul a:hover{
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #495057;
+    color: var(--grey-color);
     background-color: white;
     background-clip: padding-box;
     border: 1px solid;
     border-radius: .25rem;
     box-sizing: border-box;
 }
-.loginform input[type="submit"]{
+.loginform input[type="submit"], button{
     background: var(--purple-color);;
     color: white;
     text-transform: uppercase;
     width: auto;
     margin-left: auto;
+}
+button{
+    border: none;
+    padding: 0%;
+    font-size: 1rem;
+    padding: .375rem .75rem;
+    border-radius: .25rem;
+    margin-bottom: 2px;
+    cursor: pointer;
 }
 .form-container{
     display: flex;
@@ -103,4 +113,42 @@ nav ul a:hover{
 }
 .text-error{
     color: red;
+}
+section{
+    margin: 60px auto 0 auto;
+    max-width: 960px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+section h1{
+    color: var(--grey-color);
+}
+
+table{
+    width: 100%;
+    box-shadow: var(--box-shadow);
+    text-align: left;
+    font-size: 1rem;
+    line-height: 2rem;
+    box-sizing: border-box;
+    color: var(--grey-color);
+    border-collapse: collapse;
+}
+th, td{
+    font-weight: normal;
+    padding: 16px;
+}
+tr{
+    border-bottom: 1px solid var(--grey-color);
+}
+td a{
+    color: var(--red-color);
+}
+button.add-user{
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+.create-user {
+    text-align: right;
 }
