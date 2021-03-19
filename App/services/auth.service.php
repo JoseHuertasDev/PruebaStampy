@@ -1,4 +1,5 @@
 <?php
+    
     interface IAuthService{
         public function isAuth();
         public function logUser(string $email);

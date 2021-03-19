@@ -1,15 +1,13 @@
 <?php
-    require_once './libs/router.class.php';
-    require_once './app/controller/user.controller.php';
-    require_once './app/controller/home.controller.php';
+    include_once "libs/includes.php";
 
     class Startup{
         public function init(){
 
             //Añadimos las dependencias
             DependencyInjectorEngine::add("UserController","UserController");
-            DependencyInjectorEngine::add("IUserView","UserView");
-            DependencyInjectorEngine::add("ITemplate","TemplateEngine");
+            DependencyInjectorEngine::add("UserView","UserView");
+            DependencyInjectorEngine::add("HomeView","HomeView");
             DependencyInjectorEngine::addSingleton("UserModel","UserModel");
             DependencyInjectorEngine::addSingleton("IAuthService","AuthService");
             DependencyInjectorEngine::add("INavigationService","NavigationService");

@@ -1,4 +1,5 @@
 <?php
+
     interface INavigationService{
         public function goHome();
         public function goLoginPage();

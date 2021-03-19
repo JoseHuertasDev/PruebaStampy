@@ -101,3 +101,6 @@ nav ul a:hover{
     height: 90vh;
     align-items: center;;
 }
+.text-error{
+    color: red;
+}

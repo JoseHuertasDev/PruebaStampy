@@ -1,10 +1,4 @@
 <?php
-
-require_once "app/view/user.view.php";
-require_once "app/model/user.model.php";
-require_once "app/services/auth.service.php";
-require_once "app/services/navigation.service.php";
-
 class UserController{
 
     private $_view;
@@ -12,7 +6,7 @@ class UserController{
     private $_authService;
     private $_navigationService;
 
-    function __construct(IUserView $view, UserModel $model, 
+    function __construct(UserView $view, UserModel $model, 
     IAuthService $authService, INavigationService $navigationService){
         $this->_view = $view;
         $this->_model = $model;
@@ -24,7 +18,7 @@ class UserController{
         if($this->_authService->isAuth()){
             $this->_navigationService->goHome();
         }
-        $this->_view->ShowLogin();
+        $this->_view->show();
     }
 
     function logout(){
@@ -34,10 +28,10 @@ class UserController{
 
     function logUser(){
         if(!isset($_POST["input_user"])){
-            return $this->_view->ShowLogin("El usuario no existe");
+            return $this->_view->show("El usuario no existe");
         }
         if(!isset($_POST["input_pass"])){
-            return $this->_view->ShowLogin("Debe especificar una contraseña");
+            return $this->_view->show("Debe especificar una contraseña");
         }
 
         $user = $_POST["input_user"];
@@ -53,12 +47,12 @@ class UserController{
                     $this->_authService->logUser($user);
                     $this->_navigationService->goHome();
                 }else{
-                    $this->_view->ShowLogin("Contraseña incorrecta");
+                    $this->_view->show("Contraseña incorrecta");
                 }
 
             }else{
                 // No existe el user en la DB
-                $this->_view->ShowLogin("El usuario no existe");
+                $this->_view->show("El usuario no existe");
             }
         }
     }

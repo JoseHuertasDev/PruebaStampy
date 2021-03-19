@@ -12,6 +12,8 @@
         <div class="input-container">
             <input type="submit" value="Iniciar">
         </div>
-        <div>{{message}}</div>
+        <?php if($message !== ""){?>
+            <p class="text-error"><?php echo $message ?></p>
+        <?php }?>
     </form>
 </section>
