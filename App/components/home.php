@@ -15,15 +15,24 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>
-                    joseoakenshield@outlook.com
-                </td>
-                <td>
-                    <a href="delete/1">Eliminar</a>
-                    <a href="edit/1">Editar</a>
-                </td>
-            </tr>
+            <?php
+                if(isset($users)){
+                    foreach($users as $user){
+                        ?>
+                            <tr>
+                                <td>
+                                    <?php echo $user->email?>
+                                </td>
+                                <td>
+                                    <a href="eliminar-usuario/<?php echo $user->id?>">Eliminar</a>
+                                    <a href="editar-usuario/<?php echo $user->id?>">Editar</a>
+                                </td>
+                            </tr>
+                        <?php
+                    }
+                }
+            ?>
+            
         </tbody>
     </table>
 </section>

@@ -1,5 +1,5 @@
 <?php
-class UserController{
+class UserController extends BaseController{
 
     private $_view;
     private $_model;
@@ -8,6 +8,7 @@ class UserController{
 
     function __construct(UserView $view, UserModel $model, 
     IAuthService $authService, INavigationService $navigationService){
+        parent::__construct();
         $this->_view = $view;
         $this->_model = $model;
         $this->_authService = $authService;
@@ -25,8 +26,20 @@ class UserController{
         $this->_authService->logOut();
         $this->_navigationService->goLoginPage();
     }
+    function editUser($params = null){
+        if(!$this->_authService->isAuth()){
+            return $this->_navigationService->goLoginPage();
+        }
+        $id = $params[':ID'];
 
+        
+
+        echo "<h1>test $id </h1>";
+    }
     function logUser(){
+        if($this->_authService->isAuth()){
+            return $this->_navigationService->goHome();
+        }
         if(!isset($_POST["input_user"])){
             return $this->_view->show("El usuario no existe");
         }

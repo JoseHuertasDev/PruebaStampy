@@ -11,7 +11,6 @@
             DependencyInjectorEngine::addSingleton("UserModel","UserModel");
             DependencyInjectorEngine::addSingleton("IAuthService","AuthService");
             DependencyInjectorEngine::add("INavigationService","NavigationService");
-
             $this->startRouter();
         }   
 
@@ -23,6 +22,8 @@
             $router->addRoute("login", "GET", "UserController", "login");
             $router->addRoute("logout", "GET", "UserController", "logout");
             $router->addRoute("log-user", "POST", "UserController", "logUser");
+            $router->addRoute("editar-usuario/:ID","GET","UserController","editUser");
+            $router->addRoute("eliminar-usario/:ID","DELETE","UserController","editUser");
             $router->setDefaultRoute("HomeController", "showList");
             $router->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 
         }

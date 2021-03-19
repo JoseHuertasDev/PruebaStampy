@@ -1,5 +1,5 @@
 <?php
-class HomeController
+class HomeController extends BaseController
 {
     private $_authService;
     private $_homeView;
@@ -9,6 +9,7 @@ class HomeController
     INavigationService $navigationService,
     HomeView $homeView, UserModel $userModel )
     {
+        parent::__construct();
         $this->_authService = $authService;
         $this->_navigationService = $navigationService;
         $this->_homeView = $homeView;
@@ -19,7 +20,12 @@ class HomeController
         if(!$this->_authService->isAuth()){
             return $this->_navigationService->goLoginPage();
         }
-        //print_r($this->_userModel->GetAll());
-        $this->_homeView->show();
+        $users = $this->_userModel->GetAll();
+        if($users){
+            $this->_homeView->setUsers($users);
+            return $this->_homeView->show();
+        }
+
+        $this->_homeView->show("¡No hay usuarios para mostrar!");
     }
 }

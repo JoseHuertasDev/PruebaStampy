@@ -8,9 +8,9 @@ class UserModel extends Entity{
         $sqlStatement->execute(array($user));
         return $sqlStatement->fetch(PDO::FETCH_OBJ);
     }
-    /*function GetAll(){
+    function GetAll(){
         $sqlStatement = $this->db->prepare("SELECT * FROM users");
         $sqlStatement->execute();
-        return $sqlStatement->fetch(PDO::FETCH_OBJ);
-    }*/
+        return $sqlStatement->fetchAll(PDO::FETCH_OBJ);
+    }
 }

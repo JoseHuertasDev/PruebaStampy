@@ -4,6 +4,7 @@
     include_once "libs/router.class.php";
 
     //Controllers
+    include_once "./app/controller/base.controller.php";
     include_once "./app/controller/home.controller.php";
     include_once "./app/controller/user.controller.php";
 
