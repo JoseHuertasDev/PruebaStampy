@@ -14,6 +14,12 @@ El sistema requiere un motor de base de datos MySql y  un servidor Apache para p
 
 Por defecto, la base de datos trae un usuario con el mail default@sample.com con la contraseña default123.
 
+## COMO USAR EL SISTEMA ##
+
+Dentro de la raíz del proyecto tenemos un archivo .sql que contiene la base de datos con un usuario por defecto y con sus stored procedures.
+
+Dentro de la raíz del proyecto tenemos también un archivo startup.php. Dentro de ese archivo debemos definir: nombre de la base de datos, server de la base de datos, usuario y contraseña.
+
 
 ### Nota ###
 
