@@ -149,17 +149,16 @@ class UserController extends BaseController{
             return $this->_view->show("Debe especificar una contraseña");
         }
 
-        $user = $_POST["input_user"];
+        $userEmail = $_POST["input_user"];
         $pass = $_POST["input_pass"];
 
-        if(isset($user)){
-            $userFromDB = $this->_model->getUser($user);
-
+        if(isset($userEmail)){
+            $userFromDB = $this->_model->getUserByEmail($userEmail);
             if(isset($userFromDB) && $userFromDB){
                 // Existe el usuario
 
                 if (password_verify($pass, $userFromDB->password)){
-                    $this->_authService->logUser($user);
+                    $this->_authService->logUser($userEmail);
                     $this->_navigationService->goHome();
                 }else{
                     $this->_view->show("Contraseña incorrecta");

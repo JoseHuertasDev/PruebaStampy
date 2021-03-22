@@ -1,5 +1,9 @@
 <?php
     include_once "libs/includes.php";
+    define("DB_NAME", 'db_users_stampy');
+    define("DB_USER", 'root');
+    define("DB_PASSWORD", '');
+    define("DB_HOST", 'localhost');
 
     class Startup{
         private $router;
