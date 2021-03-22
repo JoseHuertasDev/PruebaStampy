@@ -41,6 +41,10 @@ class UserController extends BaseController{
         
         $viewModel->email = $emaiInput;
 
+        if (!filter_var($emaiInput, FILTER_VALIDATE_EMAIL)) {
+            return $this->_view->showEdit("El email no es valido", $viewModel);
+        }
+
         if($this->_model->getUserByEmail($emaiInput)){
             return $this->_view->showEdit("Ya existe un usuario con este email", $viewModel);
         }
@@ -97,6 +101,10 @@ class UserController extends BaseController{
         $pass_repeat = $_POST["input_pass_repeat"];
 
         $user->email = $emaiInput;
+
+        if (!filter_var($emaiInput, FILTER_VALIDATE_EMAIL)) {
+            return $this->_view->showEdit("El email no es valido", $user);
+        }
 
         if(!empty($pass)){
 
@@ -164,5 +172,6 @@ class UserController extends BaseController{
         }
     }
 
+    
     
 }

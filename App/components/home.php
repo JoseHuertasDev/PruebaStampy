@@ -6,6 +6,9 @@
         <a href="anadir-usuario" >
             <button class="add-user">Añadir usuario</button>
         </a>
+        <?php if($message !== ""){?>
+            <p class="text-error"><?php echo $message; ?></p>
+        <?php }?>
    </div>
     <table class="user-list">
         <thead>

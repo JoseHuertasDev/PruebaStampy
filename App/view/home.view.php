@@ -5,6 +5,8 @@
             $this->_users = $users;
         }
         public function show($message = ""){
+            $message = $message;
+
             $this->showHeader();
             $users = $this->_users; // lo usa el include de abajo
             include('./app/components/home.php');

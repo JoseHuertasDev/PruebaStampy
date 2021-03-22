@@ -32,4 +32,9 @@ class UserModel extends Entity{
         $sqlStatement = $this->db->prepare("INSERT INTO users (email, password) VALUES( ?,?)");
         return $sqlStatement->execute(array($email, $password));
     }
+
+    function deleteUser($user){
+        $sqlStatement = $this->db->prepare("DELETE FROM users WHERE id = ?");
+        return $sqlStatement->execute(array($user->id));
+    }
 }
