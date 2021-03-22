@@ -8,7 +8,7 @@
     }
 
     class ViewBase{
-        private $_authService;
+        private $_authService;  
         function __construct(IAuthService $authService){
             $this->_authService = $authService;
         }
