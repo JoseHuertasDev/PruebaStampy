@@ -1,5 +1,5 @@
 <section class="form-container">
-    <?php if(isset($user) && $user !== false){ ?>
+    <?php if(isset($user->id) && $user !== false){ ?>
         <form action="guardar-usuario/<?php echo $user->id; ?>" class="loginform" method="post">
     <?php } else {?> 
         <form action="guardar-usuario" class="loginform" method="post">

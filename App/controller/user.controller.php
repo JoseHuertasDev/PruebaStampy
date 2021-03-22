@@ -33,7 +33,7 @@ class UserController extends BaseController{
         }
         $viewModel = new UserViewModel();
 
-        if($this->showErrorIfDataMissing($viewModel)) return; //Si se mostro un error
+        if($this->showErrorIfDataMissing($viewModel, true)) return; //Si se mostro un error
 
         $emaiInput = $_POST["input_user"];
         $pass = $_POST["input_pass"];
@@ -60,7 +60,7 @@ class UserController extends BaseController{
         $this->_navigationService->goHome();
     }
     
-    protected function showErrorIfDataMissing($user = null){
+    protected function showErrorIfDataMissing($user = null, $password_required = false){
         
         if(!isset($_POST["input_user"]) || empty($_POST["input_user"])){
             $this->_view->showEdit("Debe especificar un email");
@@ -69,11 +69,11 @@ class UserController extends BaseController{
         if($user !== null){
             $user->email = $_POST["input_user"];
         }
-        if(!isset($_POST["input_pass"]) || empty($_POST["input_pass"])){
+        if((!isset($_POST["input_pass"]) || empty($_POST["input_pass"])) && $password_required ){
             $this->_view->showEdit("Debe especificar una contraseña", $user);
             return true;
         }
-        if(!isset($_POST["input_pass_repeat"]) || empty($_POST["input_pass_repeat"])){
+        if((!isset($_POST["input_pass_repeat"]) || empty($_POST["input_pass_repeat"])) && $password_required ){
             $this->_view->showEdit("Debe repetir la contraseña", $user);
             return true;
         }
