@@ -3,7 +3,7 @@
         Lista de usuarios 
    </h1>
    <div class="create-user">
-        <a href="create-user" >
+        <a href="anadir-usuario" >
             <button class="add-user">Añadir usuario</button>
         </a>
    </div>

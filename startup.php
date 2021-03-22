@@ -23,8 +23,9 @@
             $router->addRoute("logout", "GET", "UserController", "logout");
             $router->addRoute("log-user", "POST", "UserController", "logUser");
             $router->addRoute("editar-usuario/:ID","GET","UserController","editUser");
+            $router->addRoute("anadir-usuario","GET","UserController","editUser");
             $router->addRoute("guardar-usuario/:ID","POST","UserController","saveUser");
-            $router->addRoute("eliminar-usario/:ID","DELETE","UserController","editUser");
+            $router->addRoute("guardar-usuario","POST","UserController","saveNewUser");
             $router->setDefaultRoute("HomeController", "showList");
             $router->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 
         }

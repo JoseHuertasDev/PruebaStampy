@@ -9,6 +9,7 @@
     include_once "./app/controller/user.controller.php";
 
     //Views
+    include_once "./app/view/view-models/UserViewModel.php";
     include_once "./app/view/view.base.php";
     include_once "./app/view/home.view.php";
     include_once "./app/view/user.view.php";

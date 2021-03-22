@@ -20,7 +20,7 @@ class HomeController extends BaseController
         if(!$this->_authService->isAuth()){
             return $this->_navigationService->goLoginPage();
         }
-        $users = $this->_userModel->GetAll();
+        $users = $this->_userModel->getAll();
         if($users){
             $this->_homeView->setUsers($users);
             return $this->_homeView->show();
