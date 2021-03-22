@@ -13,4 +13,15 @@ class UserModel extends Entity{
         $sqlStatement->execute();
         return $sqlStatement->fetchAll(PDO::FETCH_OBJ);
     }
+    function GetUserById($id){
+        $sqlStatement = $this->db->prepare("SELECT * FROM users WHERE ID=?");
+        $sqlStatement->execute(array($id));
+        return $sqlStatement->fetch(PDO::FETCH_OBJ);
+    }
+    function UpdateUser($user){
+        $sqlStatement = $this->db->prepare("UPDATE users SET email=?, password=? WHERE ID=?");
+        $sqlStatement->execute(array($user->email, $user->password, $user->id));
+        return $sqlStatement->rowCount() > 0;
+    }
+    
 }
